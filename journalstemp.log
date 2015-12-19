@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 DEC 2015 14:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 DEC 2015 14:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -171,28 +171,27 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 Class revtex4-1 Info: RevTeX society APS selected on input line 423.
 )
-Class revtex4-1 Info: Patching LaTeX tabular. on input line 10.
-Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 10.
-
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 10.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 10.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 10.
+Class revtex4-1 Info: Patching LaTeX tabular. on input line 5.
+Class revtex4-1 Info: Robustifying \LaTeX's \boldmath command on input line 5.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 5.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 5.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 5.
 
 (./journalstemp.aux)
 \openout1 = `journalstemp.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -209,32 +208,32 @@ LaTeX Font Info:    ... okay on input line 10.
 \everyMPtoPDFconversion=\toks20
 )
 
-./journalstemp.tex:10: LaTeX Error: \RequirePackage or \LoadClass in Options Se
-ction.
+./journalstemp.tex:5: LaTeX Error: \RequirePackage or \LoadClass in Options Sec
+tion.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.10 \begin{document}
-                     
+l.5 \begin{document}
+                    
 ? 
 \openout3 = `journalstempNotes.bib'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 25.
+(Font)              <7> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 25.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 25.
+(Font)              <5> on input line 20.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 20.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 25.
+(Font)              <8> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 25.
+(Font)              <6> on input line 20.
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--41
+Underfull \hbox (badness 10000) in paragraph at lines 24--36
 
  []
 
@@ -243,82 +242,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--41
 File: Cm_PSD_Boer1.pdf Graphic file (type pdf)
 
 <use Cm_PSD_Boer1.pdf>
-Package pdftex.def Info: Cm_PSD_Boer1.pdf used on input line 83.
+Package pdftex.def Info: Cm_PSD_Boer1.pdf used on input line 78.
 (pdftex.def)             Requested size: 256.0158pt x 162.24574pt.
  [6 <./Cm_PSD_Boer1.pdf>] [7] [8] [9] [10] [11] [12]
 [13] [14] [15] <GTA_inputs.pdf, id=71, 420.57124pt x 316.18124pt>
 File: GTA_inputs.pdf Graphic file (type pdf)
 
 <use GTA_inputs.pdf>
-Package pdftex.def Info: GTA_inputs.pdf used on input line 259.
+Package pdftex.def Info: GTA_inputs.pdf used on input line 254.
 (pdftex.def)             Requested size: 336.45746pt x 252.94533pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 260.
+(Font)              <9> on input line 255.
  [16] [17 <./GTA_inputs.pdf>]
 <CZ_ip_op.pdf, id=92, 577.15625pt x 337.26pt>
 File: CZ_ip_op.pdf Graphic file (type pdf)
  <use CZ_ip_op.pdf>
-Package pdftex.def Info: CZ_ip_op.pdf used on input line 291.
+Package pdftex.def Info: CZ_ip_op.pdf used on input line 286.
 (pdftex.def)             Requested size: 284.52756pt x 166.26749pt.
 
 <GTA_Cz_SA.pdf, id=93, 436.63126pt x 313.17pt>
 File: GTA_Cz_SA.pdf Graphic file (type pdf)
  <use GTA_Cz_SA.pdf>
-Package pdftex.def Info: GTA_Cz_SA.pdf used on input line 301.
+Package pdftex.def Info: GTA_Cz_SA.pdf used on input line 296.
 (pdftex.def)             Requested size: 284.52756pt x 204.07416pt.
 
 <GTA_Cz_Par.pdf, id=94, 485.815pt x 307.1475pt>
 File: GTA_Cz_Par.pdf Graphic file (type pdf)
  <use GTA_Cz_Par.pdf>
-Package pdftex.def Info: GTA_Cz_Par.pdf used on input line 307.
+Package pdftex.def Info: GTA_Cz_Par.pdf used on input line 302.
 (pdftex.def)             Requested size: 284.52756pt x 179.88443pt.
  [18 <./CZ_ip_op.pdf>] [19 <./GTA_Cz_SA.pdf> <./GTA_Cz_Par.pdf>]
 <Cz_PSD_83_raw.pdf, id=143, 399.4925pt x 227.85126pt>
 File: Cz_PSD_83_raw.pdf Graphic file (type pdf)
  <use Cz_PSD_83_raw.pdf>
-Package pdftex.def Info: Cz_PSD_83_raw.pdf used on input line 327.
+Package pdftex.def Info: Cz_PSD_83_raw.pdf used on input line 322.
 (pdftex.def)             Requested size: 284.52756pt x 162.28659pt.
 
 [20 <./Cz_PSD_83_raw.pdf>] <LA83_sim.pdf, id=154, 436.63126pt x 313.17pt>
 File: LA83_sim.pdf Graphic file (type pdf)
 
 <use LA83_sim.pdf>
-Package pdftex.def Info: LA83_sim.pdf used on input line 350.
+Package pdftex.def Info: LA83_sim.pdf used on input line 345.
 (pdftex.def)             Requested size: 284.52756pt x 204.07416pt.
  [21] [22 <./LA83_sim.pdf>]
 <GTA_R63_Cm.pdf, id=173, 348.30125pt x 241.90375pt>
 File: GTA_R63_Cm.pdf Graphic file (type pdf)
  <use GTA_R63_Cm.pdf>
-Package pdftex.def Info: GTA_R63_Cm.pdf used on input line 372.
+Package pdftex.def Info: GTA_R63_Cm.pdf used on input line 367.
 (pdftex.def)             Requested size: 284.52756pt x 197.62042pt.
 
 <R63_kernelstates.pdf, id=174, 420.57124pt x 316.18124pt>
 File: R63_kernelstates.pdf Graphic file (type pdf)
 
 <use R63_kernelstates.pdf>
-Package pdftex.def Info: R63_kernelstates.pdf used on input line 379.
+Package pdftex.def Info: R63_kernelstates.pdf used on input line 374.
 (pdftex.def)             Requested size: 284.52756pt x 213.90523pt.
  [23 <./GTA_R63_Cm.pdf>]
 <PDEM_Cm_R63.pdf, id=191, 458.71375pt x 331.2375pt>
 File: PDEM_Cm_R63.pdf Graphic file (type pdf)
  <use PDEM_Cm_R63.pdf>
-Package pdftex.def Info: PDEM_Cm_R63.pdf used on input line 393.
+Package pdftex.def Info: PDEM_Cm_R63.pdf used on input line 388.
 (pdftex.def)             Requested size: 284.52756pt x 205.4662pt.
 
 [24 <./R63_kernelstates.pdf>] [25 <./PDEM_Cm_R63.pdf>]
 
-LaTeX Warning: Reference `eq:VVMfun1' on page 26 undefined on input line 423.
+LaTeX Warning: Reference `eq:VVMfun1' on page 26 undefined on input line 418.
 
 <Rlocus_alpha.pdf, id=232, 400.49625pt x 252.945pt>
 File: Rlocus_alpha.pdf Graphic file (type pdf)
  <use Rlocus_alpha.pdf>
-Package pdftex.def Info: Rlocus_alpha.pdf used on input line 438.
+Package pdftex.def Info: Rlocus_alpha.pdf used on input line 433.
 (pdftex.def)             Requested size: 284.52756pt x 179.71185pt.
 
 <Rlocus_SP.pdf, id=233, 403.5075pt x 250.9375pt>
 File: Rlocus_SP.pdf Graphic file (type pdf)
  <use Rlocus_SP.pdf>
-Package pdftex.def Info: Rlocus_SP.pdf used on input line 445.
+Package pdftex.def Info: Rlocus_SP.pdf used on input line 440.
 (pdftex.def)             Requested size: 284.52756pt x 176.9454pt.
  [26 <./Rlocus_alpha.pdf>] [27 <./Rlocus_SP.pdf>] (./journalstemp.bbl [28] [29]
  [30]
@@ -359,7 +358,7 @@ ts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2015/texmf-dist/fonts
 /type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/public/cm-super/sfti0900.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
 e1/public/cm-super/sfti1000.pfb>
-Output written on journalstemp.pdf (32 pages, 585303 bytes).
+Output written on journalstemp.pdf (32 pages, 584765 bytes).
 PDF statistics:
  356 PDF objects out of 1000 (max. 8388607)
  250 compressed objects within 3 object streams
