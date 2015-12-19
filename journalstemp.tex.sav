@@ -1,0 +1,144 @@
+\documentclass{AIAA}
+
+\begin{document}
+
+\title{Nonlinear Unsteady Aerodynamic Modeling for Fight Dynamics at Stall}
+
+\author{First A. Author\footnote{Insert Job Title, Department Name, Address/Mail Stop, and AIAA Member Grade (if any) for first author.} and Second B. Author Jr.\footnote{Insert Job Title, Department Name, Address/Mail Stop, and AIAA Member Grade (if any) for second author.}}
+\affiliation{Business or Academic Affiliation 1, City, State, Zip Code}
+\author{Third C. Author\footnote{Insert Job Title, Department Name, Address/Mail Stop, and AIAA Member Grade (if any) for third author.}}
+\affiliation{Business or Academic Affiliation 2, City, Province, Zip Code, Country}
+\author{Fourth D. Author\footnote{Insert Job Title, Department Name, Address/Mail Stop, and AIAA Member Grade (if any) for fourth author (etc.).}}
+\affiliation{Business or Academic Affiliation 2, City, State, Zip Code}
+
+\begin{abstract} % 100-200 words only
+The variation of aerodynamic loads due to change in flow-incidence angles is known to be unsteady and nonlinear at low Mach number in stall angle-of-attack region. In case of low aspect-ratio and delta-wing shape aircrafts the flow in these conditions is dominated by vortices from the wing leading edges, which break-down on the wings. This phenomena causes significant dependence of aerodynamic loads on the history of flow incidence angles, which in-turn effects the fast modes of an aircraft. Hence, a fidelity unsteady aerodynamic model is essential for flight simulation, analysis of flight modes, and validation of flight envelope protection features in the aircraft design and development process. In this paper, we present two complimentary model structures and a simple parameter estimation approach which can be used for reduced-order modeling of aerodynamic coefficients in the stall regimes. The model structures are shown to be inherently connected to the important features of aerodynamic flow observed in the experimental studies. The approaches are shown to be useful to model normal force, pitching, rolling, yawing moment coefficients of an aircraft using dynamic wind tunnel test data. The effect of unsteady loads on fast modes of the aircraft is shown using eigen-spectrum analysis of the linear flight dynamics equations.
+\end{abstract}
+
+\maketitle
+
+\section*{Nomenclature}
+(Nomenclature entries should have the units identified)\\
+\noindent\begin{tabular}{@{}lcl@{}}
+\textit{A}  &=& amplitude of oscillation \\
+\textit{a   }&=&    cylinder diameter \\
+\textit{C}$_{p}$&=& pressure coefficient \\
+\textit{Cx} &=& force coefficient in the \textit{x} direction \\
+\textit{Cy} &=& force coefficient in the \textit{y} direction \\
+c   &=& chord \\
+d\textit{t} &=& time step \\
+\textit{Fx} &=& \textit{X} component of the resultant pressure force acting on the vehicle \\
+\textit{Fy} &=& \textit{Y} component of the resultant pressure force acting on the vehicle \\
+\textit{f, g}   &=& generic functions \\
+\textit{h}  &=& height \\
+\textit{i}  &=& time index during navigation \\
+\textit{j}  &=& waypoint index \\
+\textit{K}  &=& trailing-edge (TE) nondimensional angular deflection rate
+\end{tabular} \\
+
+%10,000-12,000 words document, each figure=200 words
+
+\section{Introduction}
+
+%a.	-Motivation  b.	-Literature  c.	-Approach
+
+For a delta-wing aircraft, aerodynamics at stall angles-of-attack and low Mach numbers is unsteady and nonlinear. The aerodynamic loads acting on the aircraft depend on the history of flow incidence angles (angle-of-attack and sideslip). This phenomena is nonlinear, considering the unsteady variation of loads over a wide range of flow-incidence angles, and that its power spectrum contains super-harmonics of sinusoidal input frequency. These necessitate special methods of mathematical modeling and parameter estimation using dynamic wind tunnel test data. Hence, it has been studied extensively in dynamic wind tunnel tests \cite{AGARDAR305}, and a variety of mathematical modeling approaches have been proposed in literature \cite{Goman94,Tobak1,GreReview}.
+
+The unsteady aerodynamic modeling approaches have been shown to be important in wide-range of applications. There is a renewed interest in the Industry for simulation training of flight in stall and departure outside the normal flight envelope for commercial transport aircrafts. NASA-Langley pioneered a major project under the "Aviation Safety Program" in the US \cite{upset}, and a similar program called "Simulation of Upset Recovery in Aviation" was undertaken in Europe by a collaboration of multiple universities and national laboratories \cite{SUPRAGoman,SUPRAICAS}.
+
+For fighter aircrafts, the unsteady model is used to asses the flight envelope protection control laws \cite{F18derivatives}. Its potential use in design of trainer aircrafts which routinely fly in-to stall and post-stall gyrations, was recently presented in []. At higher wind speed conditions, the wind turbine blades encounter unsteady aerodynamic loads, which should be modeled accurately for optimizing its structural strength and performance \cite{Turbine1}. In the forward-flight of an helicopter, the rotor blade aerodynamics is effected by flow separation and dynamic stall. The problem of aero-elastic modeling of the buffeting of helicopter blades requires a reliable model of unsteady aerodynamics \cite{Helicopter1}.  With the advent of miniature flapping wing aircrafts (for example Nano-Hummingbird developed by Aerovironment.Inc.) a nonlinear unsteady aerodynamic modeling method is essential for the advancement of related technologies \cite{FlapWing}.
+
+
+There is still no commonly acceptable nonlinear model structure for modeling unsteady aerodynamic loads in the stall conditions. Goman and Khrabrov presented the seminal paper on State-space approach approach in 1994 \cite{Goman94}, and then its several adaptations have been presented in literature \cite{Abramov99,Abramov2,Lutze1}. Tobak and Schiff pioneered a rigorous theory based on indicial responses \cite{Tobak1}. This is simplified by several assumptions to obtain a simpler ordinary differential equation based model for identification using wind tunnel test data \cite{Klein,Tobak3}. This approach has been extensively investigated \cite{MurphyMethods}\cite{MurphyGTM}\cite{F16XLLong}. In these models unsteady variations in $C_Z$, $C_m$ and $C_l$ coefficients are modeled using extensive forced oscillation wind tunnel data for airfoils and delta-wing aircrafts. Goman-Khrabrov modeled was successfully used for identification from flight test data in \cite{Singh1},\cite{Singh2}\cite{Goman94}. All these approaches are equivalent in their linear form while their nonlinear adaptations are semi-empirical or adhoc \cite{GreComp,GreReview}.
+
+Other unsteady modeling approaches presented in literature are : Neural Network approach \cite{NeuralNet}, Volterra Series based approach \cite{ReiKernel}. These methods can be considered to be not much successful as they have not been cited by other authors.
+
+VVM is derived as a set of parametric differential equations of so-called kernel states, from the Volterra Series.  These kernel-states have special harmonic input response properties, which are leveraged to develop a systematic methodology to capture the strongly nonlinear unsteady variations in pitching moment coefficients. The model formulation is independent of the experimental data. VVM is shown to be consistent with the core principles of all the modeling approaches in literature.
+
+The features of VVM which make it a powerful approach for modeling the unsteady loads are: (i) Mathematically rigorous model structure (ii) Correlation of the features of unsteady aerodynamics to its physical interpretations (iii) Being a parametric model in the State-space differential form, it facilitates linear analysis of the flight modes (iv) Simple and flexible identification process using comprehensive forced oscillation wind tunnel test data (v) Open to innovations in model structure and estimation methodology.These concepts are demonstrated using comprehensive wind tunnel test data for the Generic Tailless Aircraft and F16XL aircrafts.
+
+
+\section{Features of unsteady aerodynamic loads from Experimental observations}
+
+ In the proposed approach, it is shown that the mathematical model structure has an inherent correlation with the fundamental features of flow dynamics at stall. This established the physical consistency and higher fidelity of the modeling approach; unlike the "black-box" type models which are just 'data-true'. Hence, in this section the features of unsteady aerodynamics, as known from the experimental studies done on delta-wing configurations are summarized. 
+
+The aerodynamics of a delta-wing aircraft is dominated by the wing leading-edge vortices formed on the upper surface of the wings. As the aircraft enters the stall region the normal force stops increasing with increase in angle-of-attack. At this point the wing leading edge vortices breakdown or dissipate on the surface of the wing. As angle-of-attack is increased further the vortex breakdown location on each wing shifts towards the wind leading edge, and at certain angle-of-attack it is completely dissipated. This range of angles-of-attack is defined as the stall region for delta-wing aircraft. 
+
+
+In the stall region, the aerodynamic loads acting on the aircraft are unsteady in nature because the flow on wings depends on the history of flow-incidence angles. The point of vortex breakdown location on the wings changes with a finite time-lag in response to pitching motion inputs. Its trajectory depends on initial angle-of-attack, non-dimensional pitch-rate and direction of pitching motion input. This has been amply illustrated in the discussions presented in \cite{Nelson}. It is therefore imperative that the aerodynamic loads acting on the wings be investigated for dependence on these parameters using dynamic wind tunnel tests.
+
+The harmonic input forced oscillation wind tunnel tests have been widely used for characterization and modeling of unsteady loads in stall region. These tests are performed considering wide range of input amplitudes in the range ($3^o-25^o$) and non-dimensional pitching frequencies ($0.01 - 0.2$). For modeling longitudinal loads flow-incidence angles $\alpha$ or $\beta$ are used as inputs, while for lateral-directional loads flow-incidence angles $\beta$ or $\phi$ are used as inputs. It is found in most cases that the variation of loads for small amplitude inputs ($2^o-5^o$) is approximately linear, while that for large amplitudes is nonlinear. However, due to their unsteady nature, the variations are a strong function of the frequency for small amplitude inputs. This data is commonly reduced to first order Fourier coefficients, which are plotted in Fig.(). It is evident that the in-phase and out-of-phase derivatives of $C_Z$ and $C_m$ depend on frequency in the stall region. The variation of loads is also significantly different for different mean angle-of-attack and amplitudes. These features have also also been reported for other delta-wing configurations \cite{Boer1,Boer2,F16XLLong,X31,Abramov1}.
+
+The nonlinear nature of the variation of aerodynamic loads due to large amplitude inputs is evident from their power spectrum maps. As seen in Fig.(), second and third order harmonics of the input frequency are excited to a significant level in some cases. These harmonics are also observed for pressure measurements at a particular location on a double-delta wing. This implies that the aerodynamic loads are nonlinear in nature for variations a range  of angle-of-attack.
+
+The nonlinear nature of unsteady variations can be attributed to changing value of the time-scale parameter over the range of angle-of-attack under consideration. However, the time-scale has also been found to be effected by the external pressure gradient in the surrounding flow. Investigations of this phenomena lead to a conclusion that the time-scale for pitch-up motion is greater than the time-scale for pitch down motion. This implies that the variation in load in response to a sinusoidal input is not eliptic, and hence it is nonlinear.
+
+
+
+
+
+a. Memory effect causing unsteady dependence
+b.	Amplitude/Frequency dependence
+c.	Super-harmonics in loads and pressure
+d.	Time-scale in pitch-up and pitch-down
+e.	Static hysteresis, Critical states crossing
+
+\section{Nonlinear Modeling Approaches}
+Some features are incorporated in the model parameter estimation procedure.
+
+\subsection{Polynomial-nonlinearity Differential Equation Structure}
+\subsection{Volterra Variational Structure}
+
+\section{Identification Case Studies}
+
+\subsection{Cz of F16XL}
+\subsection{Cm of GTA}
+\subsection{Cl, Cn of Delta-$65^o$ Wing}
+\subsection{Comparative analysis of VVM and PoDE}
+
+\section{Influence on Flight Dynamics}
+\section{Conclusions}
+
+
+%\subsection{Parameter Estimation Approach}
+
+%\section{Conclusion}
+%Although a conclusion may review the main points of the paper, it must not replicate the abstract. A conclusion might elaborate on the importance of the work or suggest applications and extensions. Do not cite references in the conclusion. Note that the conclusion section is the last section of the paper to be numbered. The appendix (if present), acknowledgment, and references are listed without numbers.
+%
+%\section*{Appendix}
+%
+%An Appendix, if needed, appears before the acknowledgments.
+
+\section*{Acknowledgments}
+Authors acknowledge the partial financial support from ADA,Bangalore for doing this work.
+
+\section*{References}
+
+\bibliographystyle{aiaa}
+\bibliography{ThesisRef}
+
+%\begin{thebibliography}{}
+%\bibitem{1} Vatistas, G. H., Lin, S., and Kwok, C. K., ``Reverse Flow Radius in Vortex Chambers,'' \textit{AIAA Journal}, Vol. 24, No. 11, 1986, pp. 1872, 1873. doi: 10.2514/3.13046
+%\bibitem{2} Dornheim, M. A., ``Planetary Flight Surge Faces Budget Realities,'' \textit{Aviation Week and Space Technology}, Vol. 145, No. 24, 9 Dec. 1996, pp. 44--46.
+%\bibitem{3} Terster, W., ``NASA Considers Switch to Delta 2,'' \textit{Space News}, Vol. 8, No. 2, 13--19 Jan. 1997, pp. 1, 18.
+%\bibitem{4} Peyret, R., and Taylor, T. D., \textit{Computational Methods in Fluid Flow}, 2$^{{\rm nd}}$ ed., Springer-Verlag, New York, 1983, Chaps. 7, 14.
+%\bibitem{5} Oates, G. C. (ed.), \textit{Aerothermodynamics of Gas Turbine and Rocket Propulsion}, AIAA Education Series, AIAA, New York, 1984, pp. 19, 136.
+%\bibitem{6} Volpe, R., ``Techniques for Collision Prevention, Impact Stability, and Force Control by Space Manipulators,'' \textit{Teleoperation and Robotics in Space}, edited by S. B. Skaar and C. F. Ruoff, Progress in Astronautics and Aeronautics, AIAA, Washington, DC, 1994, pp. 175--212.
+%\bibitem{7} Thompson, C. M., ``Spacecraft Thermal Control, Design, and Operation,'' \textit{AIAA Guidance, Navigation, and Control Conference}, CP849, Vol. 1, AIAA, Washington, DC, 1989, pp. 103--115
+%\bibitem{8} Chi, Y. (ed.), \textit{Fluid Mechanics Proceedings}, NASA SP-255, 1993.
+%\bibitem{9} Morris, J. D., ``Convective Heat Transfer in Radially Rotating Ducts,'' \textit{Proceedings of the Annual Heat Transfer Conference}, edited by B. Corbell, Vol. 1, Inst. of Mechanical Engineering, New York, 1992, pp. 227--234.
+%\bibitem{10} Chapman, G. T., and Tobak, M., ``Nonlinear Problems in Flight Dynamics,'' NASA TM-85940, 1984.
+%\bibitem{11} Steger, J. L., Jr., Nietubicz, C. J., and Heavey, J. E., ``A General Curvilinear Grid Generation Program for Projectile Configurations,'' U.S. Army Ballistic Research Lab., Rept. ARBRL-MR03142, Aberdeen Proving Ground, MD, Oct. 1981.
+%\bibitem{12} Tseng, K., ``Nonlinear Green's Function Method for Transonic Potential Flow,'' Ph.D. Dissertation, Aeronautics and Astronautics Dept., Boston Univ., Cambridge, MA, 1983.
+%\bibitem{13} Richard, J. C., and Fralick, G. C., ``Use of Drag Probe in Supersonic Flow,'' \textit{AIAA Meeting Papers on Disc} [CD-ROM], Vol. 1, No. 2, AIAA, Reston, VA, 1996.
+%\bibitem{14} Atkins, C. P., and Scantelbury, J. D., ``The Activity Coefficient of Sodium Chloride in a Simulated Pore Solution Environment,'' \textit{Journal of Corrosion Science and Engineering} [online journal], Vol. 1, No. 1, Paper 2, URL: \url{http://www.cp/umist.ac.uk/JCSE/vol1/vol1.html} [cited 13 April 1998].
+%\bibitem{15} Vickers, A., ``10-110 mm/hr Hypodermic Gravity Design A,'' \textit{Rainfall Simulation Database} [online database], URL: \url{http://www.geog.le.ac.uk/bgrg/lab.htm} [cited 15 March 1998].
+%\bibitem{16} TAPP, Thermochemical and Physical Properties, Software Package, Ver. 1.0, E. S. Microware, Hamilton, OH, 1992.
+%\bibitem{17} Scherrer, R., Overholster, D., and Watson, K., Lockheed Corp., Burbank, CA, U.S. Patent Application for a ``Vehicle,'' Docket No. P-01-1532, filed 11 Feb. 1979.
+%\bibitem{18} Doe, J., ``Title of Paper,'' \textit{Name of Journal} (to be published).
+%\bibitem{19} Doe, J., ``Title of Chapter,'' \textit{Name of Book}, edited by\ldots , Publisher's name and location (to be published).
+%\bibitem{20} Doe, J., ``Title of Work,'' Name of Archive, Univ. (or organization), City, State, Year (unpublished).
+%\end{thebibliography}
+
+
+\end{document}

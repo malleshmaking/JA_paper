@@ -1,0 +1,296 @@
+\documentclass{AIAA}
+
+%\usepackage{amsmath}
+%\usepackage{graphicx}
+%\usepackage{amsfonts}
+%\usepackage{subfigmat}
+%\usepackage{subfigure}
+
+\begin{document}
+
+\title{Nonlinear Unsteady Aerodynamic Modeling for Fight Dynamics at Stall}
+
+
+\author{Mallesh V. Bommanahal\footnote{Scientist, Flight Mechanics and Control Department.}}
+\affiliation{CSIR-National Aerospace Laboratories, Bangalore, Karnataka, 560017, India}
+
+\author{Mikhail Goman\footnote{Professor, Faculty of Technology and AIAA Member Grade (if any).} and Nikolay Abramov\footnote{Senior Research Fellow, Faculty of Technology, and AIAA Member Grade (if any).}}
+\affiliation{De Montfort University, Leicester, LE1 9BH, United Kingdom}
+
+
+\begin{abstract} % 100-200 words only
+The variation of aerodynamic loads due to change in flow-incidence angles is known to be unsteady and nonlinear in the stall angle-of-attack region at low Mach number. For low aspect-ratio and delta-wing shape aircrafts, the flow in these conditions is dominated by vortices from the wing leading edges, and their break-down on the wings. This phenomena causes significant dependence of aerodynamic loads on the history of flow incidence angles, which in-turn effects the fast modes of an aircraft. Hence, a high fidelity unsteady aerodynamic model is essential for flight simulation and analysis of flight modes in the aircraft design process. In this paper, two complimentary model structures and a simple parameter estimation approach which can be used for reduced-order modeling of aerodynamic coefficients in the stall regimes are presented. The proposed model structures exhibit the important features of unsteady aerodynamics as known from experimental investigations. These approaches are demonstrated to accurately model normal force, pitching, rolling, yawing moment coefficients of an aircraft using harmonic input forced oscillation wind tunnel test data for three delta-wing aircrafts. The effects of unsteady loads on the fast modes of aircraft is analysed using eigen-spectrum analysis of the linearised flight dynamics equations.
+\end{abstract}
+
+\maketitle
+
+\section*{Nomenclature}
+%(Nomenclature entries should have the units identified)\\
+\noindent\begin{tabular}{@{}lcl@{}}
+\textit{A}  &=& amplitude of oscillation (deg)\\
+\textit{$\omega$ }&=&  frequency of harmonic oscillation (rad/s) \\
+\textit{C}$_{m}$&=& pitching moment coefficient (non-dimensional) \\
+\textit{C}$_{Z}$&=& normal force coefficient (non-dimensional)\\
+\textit{C}$_{l}$&=& rolling moment coefficient (non-dimensional)\\
+\textit{C}$_{n}$&=& yawing moment coefficient (non-dimensional)\\
+c   &=& chord \\
+%d\textit{t} &=& time step \\
+\textit{$x_1$,$x_2$,$x_3$} &=& kernel states of Volterra variational model \\
+\textit{f}  &=& nondimensional pitching motion rate
+\end{tabular} \\
+
+%10,000-12,000 words document, each figure=200 words
+
+\section{Introduction}
+
+%a.	-Motivation  b.	-Literature  c.	-Approach
+
+For a delta-wing aircraft, aerodynamics at stall angles-of-attack and low Mach numbers is unsteady and nonlinear. The aerodynamic loads acting on the aircraft are unsteady as these depend on the history of flow incidence angles (angle-of-attack and sideslip). This phenomena is nonlinear, considering the unsteady variation of loads over a wide range of flow-incidence angles, and that its power spectrum contains super-harmonics of sinusoidal input frequency. These necessitate special methods of mathematical modeling and parameter estimation using dynamic wind tunnel test data. Hence, it has been studied extensively in dynamic wind tunnel tests \cite{AGARDAR305}, and a variety of mathematical modeling approaches have been proposed in literature \cite{Goman94,Tobak1,GreReview}.
+
+There is a renewed interest in the Industry for simulator training of the recovery of aircraft from unusual attitudes like stall and departure outside the normal flight envelope, for commercial transport aircrafts. NASA-Langley pioneered a major project under the "Aviation Safety Program" in the US \cite{upset}, and a similar program called "Simulation of Upset Recovery in Aviation" was undertaken in Europe by a collaboration of multiple universities and national laboratories \cite{SUPRAGoman,SUPRAICAS}.
+
+The unsteady aerodynamic modeling approaches are important for a variety of aerospace applications. For fighter aircrafts, the unsteady model is used to asses the flight envelope protection control laws \cite{F18derivatives}. Its potential use in design of trainer aircrafts which routinely fly in-to stall and post-stall gyrations, was recently presented in []. At higher wind speed conditions, the wind turbine blades encounter unsteady aerodynamic loads, which should be modeled accurately for optimizing its structural strength and performance \cite{Turbine1}. In the forward-flight of an helicopter, the rotor blade aerodynamics is effected by flow separation and dynamic stall. The problem of aero-elastic modeling of the buffeting of helicopter blades requires a reliable model of unsteady aerodynamics \cite{Helicopter1}.  With the advent of miniature flapping wing aircrafts (for example Nano-Hummingbird developed by Aerovironment.Inc.) a nonlinear unsteady aerodynamic modeling method is essential for the advancement of related technologies \cite{FlapWing}.
+
+
+There is still no commonly acceptable nonlinear model structure for modeling unsteady aerodynamic loads in the stall conditions. Goman and Khrabrov presented a State-space approach applicable for fighter aircraft configurations and airfoils in their seminal paper in 1994 \cite{Goman94}, and then its several adaptations have been proposed in literature \cite{Abramov99,Abramov2,Lutze1}. Tobak and Schiff pioneered a rigorous theory based on indicial responses \cite{Tobak1}. This is simplified by several assumptions to obtain a simpler ordinary differential equation formulation which can be identified using wind tunnel test data \cite{Klein,Tobak3}. This approach has been extensively investigated \cite{MurphyMethods,MurphyGTM,F16XLLong}. In both of these modeling approaches, the unsteady variations in $C_Z$, $C_m$ and $C_l$ coefficients are identified using extensive forced oscillation wind tunnel data. Goman-Khrabrov model was successfully used for identification from flight test data in \cite{Goman94,Singh1,Singh2}. All these approaches are equivalent in their linear form while their nonlinear adaptations are semi-empirical or adhoc \cite{GreComp,GreReview}.
+
+Other unsteady modeling approaches presented in literature are : Neural Network approach \cite{NeuralNet}, Volterra Series based approach \cite{ReiKernel}. These methods can be considered to be not much successful as they have not been cited by other authors.
+
+The proposed Volterra variational model (VVM) is derived as a set of parametric differential equations of so-called kernel states, from the Volterra Series.  These kernel-states have special harmonic input response properties, which are leveraged to develop a systematic methodology to capture the strongly nonlinear unsteady variations in pitching moment coefficients. The model formulation is independent of the experimental data. VVM is shown to be consistent with the core principles of all the modeling approaches in literature. The features of VVM which make it a powerful approach for modeling the unsteady loads are: (ii) Correlation of the features of unsteady aerodynamics to its physical interpretations (ii) Being a parametric model in the State-space differential form, it facilitates linear analysis of the flight modes (iii) Open to innovations in model structure and estimation methodology.These concepts are demonstrated using comprehensive wind tunnel test data for the Generic Tailless Aircraft and F16XL aircrafts.
+
+The Volterra variational model is derived as a Volterra series representation of a Polynomial-nonlinearity Differential Equation model (PDEM). However, even the PDEM itself can be used for modeling nonlinear unsteady aerodynamic loads. Both the formulations have some similarities and can be estimated using the same parameter estimation procedure. These formulations are compared to show the advantages in using either of these methods for modeling.
+
+In section $2$, the most important features of unsteady aerodynamics in the stall region are summarized as these are used in model formulation and establishing a parameter estimation procedure. In section $3$, formulation of VVM and PDEM models, and their harmonic input response properties are presented. In section $4$, four identification case studies of both the approaches are presented. In the final section, broader conclusions are drawn to highlight the generic nature of the proposed approaches.
+
+
+\section{Features of unsteady aerodynamic loads from Experimental observations}
+
+% In the proposed approach, it is shown that the mathematical model structure has an inherent correlation with the fundamental features of flow dynamics at stall. This established the physical consistency and higher fidelity of the modeling approach; unlike the "black-box" type models which are just 'data-true'. Hence, in this section the features of unsteady aerodynamics, as known from the experimental studies done on delta-wing configurations are summarized.
+ 
+ The unsteady aerodynamics of delta-wing configuration aircrafts has been investigated in wind tunnel and water tunnel tests. The data from different test facilities in the world are summarized in \cite{AGARDAR305}, and the features of flow are reviewed in \cite{Gursul}\cite{Nelson}. In this section, we summarize the four most important features which are shown to be consistent with the proposed modeling approaches.
+
+The aerodynamics of a delta-wing aircraft is dominated by the wing leading-edge vortices formed on the upper surface of the wings. As the aircraft enters the stall region the normal force stops increasing with increase in angle-of-attack. At this point the wing leading edge vortices breakdown or dissipate on the surface of the wing. As angle-of-attack is increased further the vortex breakdown location shifts towards the wind leading edge, and at certain angle-of-attack it is completely dissipated. This range of angle-of-attack is defined as the stall region of a delta-wing aircraft.
+
+
+In the stall region, the aerodynamic loads acting on the aircraft are unsteady in nature because the flow on wings depends on the history of flow-incidence angles. The point of vortex breakdown location on the wings changes with a finite time-lag in response to pitching motion inputs. Its trajectory on the wing depends on initial angle-of-attack, non-dimensional pitch-rate and direction of pitching motion input. This has been amply illustrated in the discussions presented in \cite{Nelson}. It is therefore imperative that the aerodynamic loads acting on the wings be investigated for dependence on these parameters using dynamic wind tunnel tests.
+
+The harmonic input forced oscillation wind tunnel tests have been widely used for characterization and modeling of unsteady loads in the stall region. These tests are performed considering wide range of input amplitudes in the range ($3^o-25^o$) and non-dimensional pitching frequencies ($0.01 - 0.2$). For modeling longitudinal loads flow-incidence angles $\alpha$ or $\beta$ are used as inputs, while for lateral-directional loads flow-incidence angles $\beta$ or $\phi$ are used as inputs. It is found in most cases that the variation of loads for small amplitude inputs ($2^o-5^o$) is approximately linear, while that for large amplitudes is nonlinear. However, due to their unsteady nature, the variations are a strong function of the frequency for small amplitude inputs. This data is commonly reduced to first order Fourier coefficients, which are plotted in Fig.(). It is evident that the in-phase and out-of-phase derivatives of $C_Z$ and $C_m$ depend on frequency in the stall region. The variation of loads is also significantly different for different mean angle-of-attack and amplitudes. These features have also been reported for other delta-wing configurations \cite{Boer1,Boer2,F16XLLong,X31,Abramov1}.
+
+\begin{wrapfigure}{R}{0.5\textwidth}
+\centering
+\includegraphics[scale=1.5]{Cm_PSD_Boer1}
+\caption{Power spectrum plots showing harmonics in responses due to inputs of different amplitudes \cite{Boer2}.}
+\label{fig:Cm_PSD_boer}
+\end{wrapfigure}
+
+The nonlinear nature of the variation of aerodynamic loads due to large amplitude inputs is evident from their power spectrum maps. As seen in Fig.(\ref{fig:Cm_PSD_boer}), second and third order harmonics of the input frequency are excited to a significant level for input amplitude of $18^o$, while these are absent for amplitude of $2^o$. These harmonics are also observed for pressure measurements at a particular location on a double-delta wing \cite{Boer2}. This implies that the aerodynamic loads are nonlinear in nature for variations a range  of angle-of-attack.
+
+The nonlinear nature of unsteady variations can be attributed to changing value of the time-scale parameter over the range of angle-of-attack under consideration; and different time-scales of pressure variation on the wing for pitching motion. When the external pressure gradient on the wing was varied (??) the time-constant for change in vortex breakdown location was found to be different. This implies that the time-constant for pitch-up motion is greater than the time-constant for pitch down motion. For sinusoidal variation in angle-of-attack, the changing time-constant with the phase of oscillation causes a non-elliptic variation in aerodynamic loads which shows that the unsteady variation is nonlinear.
+
+% a. Memory effect causing unsteady dependence b.	Amplitude/Frequency dependence c.	 Super-harmonics in loads and pressure d.	Time-scale in pitch-up and pitch-down e.	Static hysteresis, Critical states crossing
+
+\section{Nonlinear Modeling Approaches}
+
+Two mathematical model structures called the Polynomial-nonlinearity Differential Equation model and Volterra variational model are presented in this section. While a simple first order transfer function can model the mildly nonlinear variations in normal force coefficient, a nonlinear model structure is essential for accurately modeling the pitching moment coefficient. This is illustrated in the next section. In this section, properties of the both these model structure that make them useful for modeling nonlinear unsteady aerodynamic coefficients are presented.
+
+\subsection{Polynomial-nonlinearity Differential Equation Structure}
+
+
+\begin{eqnarray}
+\label{PoDE}
+F(\frac{d}{dt})x(t) + \sum_{i=2}^{n} a_{i} x(t)^{i} = \sum_{i=1}^{n} b_{i} x(t)^{i-1}u(t); \, \, t\geq0 \\
+y(t)= C x(t)+y_0(t); \, \, x(0)=0
+\end{eqnarray}
+
+where, $x(t)$ and $u(t)$ are the system state and input respectively, while $\{(a_i,b_i) \, \forall \, i \in [1 \, n]\}$ are constant scalars. $F(d/dt)$ is a polynomial differential operator in $d/dt$ and its coefficients are independent of $x(t)$, $u(t)$ and $t$ . Since, the output $y(t)$ is simply a scalar multiple of state, we consider only the input-state dynamics in further derivations.
+
+\begin{eqnarray}
+\label{eq:Abramov-Goman2}
+C(t) &=& C_{att}(\alpha) + C_{{att}_q} \frac{q c}{2 V}+ C_{dyn}(t) \nonumber \\
+\Delta C(\alpha) &=& C_{st}(\alpha) - C_{att}(\alpha) \nonumber \\
+\tau \frac{d C_{dyn}}{dt} + C_{dyn} &=& k_1 \Delta C(\alpha) \dot{\alpha} +  \sum_{i=2}^{i=m} k_i (\Delta C(\alpha) - C_{dyn})^m
+\end{eqnarray}
+
+In a revised Abramov-Goman model presented in \cite{Abramov1}, an aerodynamic load ($C_Z, C_m, C_l$) is partitioned into the components of attached flow (obtained using Polhamus suction analogy) and dynamical component $C_{dyn}(t)$, as given in Eq.(\ref{eq:Abramov-Goman2}). The model parameters are estimated by two-step regression method. In the first step, the model is linearized considering a small amplitude sinusoidal disturbance. The resulting equations presented a linear relationship between in-phase and out-of-phase derivatives estimated from the small amplitude forced oscillation test data. Therefore, the in-phase and out-of-phase derivatives from at least three different frequencies, are used to estimate the model parameters ($\tau, k_1$) by linear regression method \cite{Morelli}. The remaining parameters introduce nonlinear corrections. These are estimated by output-error method using the entire set of large amplitude forced oscillation data.
+
+
+\subsection{Volterra Variational Structure}
+
+ Volterra series is a functional expansion of the response of a nonlinear dynamic system with memory, proposed by Vito. Volterra in 1924 \cite{Volterra}. It was first used for modeling nonlinear electrical systems by N. Weiner in 1952, and since then has been widely successfully used for modeling Bio-medical and Electrical systems \cite{Marmerelis}. It's application to modeling aerodynamic systems has been attempted a few times with limited success. The works of P.Reisenthel and W.Silva are noteworthy \cite{ReiKernel}\cite{SilvaUnst}.
+
+ Volterra series consists of convolution of the polynomial terms of input and functionals that characterise the system dynamics called the Volterra kernels, as given in Eq.(). This truncated form of the series converges to a single-stable steady-state solution for certain bounded inputs, as shown in \cite{BoydChua}. Estimation of Volterra kernels requires special experimental data from wide-band inputs with large number of harmonics. Since such experiments are infeasible for aerodynamic systems, the methods presented in literature are based on approximation of the kernel.
+
+
+ The Volterra variational equations are obtained as a Volterra series representation of an analytic and input-affine system in Eq.(\ref{PoDE}) \cite{Rugh}. Volterra series for a Single-input-single-output system is given by,
+\begin{eqnarray}
+\label{Voltseries}
+x(t)&=&h_0(t) + \int_{0}^{\infty} h_1(\tau_1)u(t-\tau_1)d\tau_1 \nonumber \\
+&& + \sum_{n=2}^\infty \int_{0}^{\infty} \cdots \int_{0}^{\infty}{h_n(\tau_1,\cdots,\tau_n)\prod_1^n u(t-\tau_n)d\tau_n}
+\end{eqnarray}
+where $h_n(\tau_1,...,\tau_n)$ is called $n$-th symmetric kernel of the Volterra series. Kernels are unique functionals characterizing the system dynamics. For a linear system, only the first kernel $h_1(\tau_1)$ is significant, and all higher order kernels are zero. Volterra series is a direct superposition of the responses of kernels to any input. If we represent the response due to kernel $h_n(\cdot)$ by the so-called kernel-state $x_n(t)$, then Eq.(\ref{Voltseries}) becomes,
+\begin{eqnarray}
+x(t) = x_1(t)+x_2(t)+x_3(t)+...+x_n(t)+...
+\end{eqnarray}
+Considering this form of the Volterra series and the system Eq.(), Volterra variational equations can be derived in time-domain as given in \cite{Rugh}, and in frequency domain as given in [Thesis].
+\begin{eqnarray}
+\label{eq:VVM_1}&&F(\frac{d}{dt})x_1(t)= b_1 u(t)\\
+\label{eq:VVM_2}&&F(\frac{d}{dt})x_2(t)+ a_2x_1^{2}(t)= b_2 x_1(t) u(t)\\
+\label{eq:VVM_3} &&F(\frac{d}{dt})x_3(t)+ 2 a_2x_1(t)x_2(t)+ a_3 x_1(t)^{3}= b_2 x_2(t)u(t)+ b_3 x_1(t)^2 u(t)\\ \nonumber
+&...
+\end{eqnarray}
+where, $x_1(0)=0$, $x_2(0)=0$, $x_3(0)=0$. This is an infinite series and is called Volterra variational equations. These equations are parametric and differential, which makes them suitable for estimation using variety of wind tunnel test data.
+
+ \begin{eqnarray}
+\label{eq:Czt}
+C_Z(t) = C_{Z_{st}}(\alpha (t))+ C_{Z_q}(\alpha (t))\frac{\bar{c}}{2V} + C_d(\alpha (t), \dot{\alpha}(t))
+\end{eqnarray}
+
+ Based on Volterra variational equations, a Volterra-variational-model of unsteady aerodynamic loads can be formulated as follows. Consider the splitting of $C_Z(t)$ into the components of corresponding steady state value and incremental unsteady variations as given in Eq.(\ref{eq:Czt}). $C_{Z_{st}}(\alpha)$ is the steady state value of $C_Z$ at each angle-of-attack, and it is known from static wind tunnel tests. $C_{Z_q}$ represents the incremental effect of steady pitching motion on $C_Z$. $C_d(t)$ represents the unsteady variation due to rate of change in flow incidence angles. In this thesis, we consider the unsteady effect of change in angle-of-attack only. These components are required to be identified from dynamic wind tunnel test data.
+
+
+ The component $C_d(t)$ is modeled based on VVM. Any change in angle-of-attack produces a non-zero value of $C_d(t)$. Hence, consider $\dot{\alpha}(t)$ to be the input and $C_d(t)$ to be the output of the system. This system has a stable equilibrium $[C_d(t),\dot{\alpha}(t))=(0,0)]$ over the domain $\alpha \in [-90^o,90^o)$. Also, the input $\dot{\alpha}$ has an upper-bound which is determined by pitching motion due to maximum elevator deflection. From Eq.(\ref{eq:Czt}), it is evident that $C_Z(t)$ converges to $C_{Z_{st}}(t)$  with a finite time delay when $(\dot{\alpha}=0)$, and its time-scale is the same as that governing $C_d(t)$.
+
+Now, a model of $C_d(t)$ in the form of VVM with three-states is given as:
+\begin{eqnarray}
+\label{eq:Cdmodel1}
+C_d(t)&=& x_1(t) + x_2(t) +x_3(t) \nonumber \\
+\dot{x}_1(t)&=&a(t)x_1(t)+ K_1(t)u(t), \, \, x_1(0)=0 \nonumber \\
+\dot{x}_2(t)&=&a(t)x_2(t)+ K_{2}(t)x_1^{2}(t) + K_{3}(t)x_1(t)u(t), \, \, x_2(0)=0 \nonumber \\
+\dot{x}_3(t)&=&a(t)x_3(t)+  K_{2}(t)x_1^{3}(t) + K_{31}(t)x_1(t)x_2(t)  + \nonumber \\
+&& K_{32}(t)x_2(t)u(t) + K_{3}(t)x_1^{2}(t)u(t) , \, \, x_3(0)=0
+\end{eqnarray}
+
+For a time-invariant system all the parameters of the model can be considered to be constants. In case of unsteady aerodynamics, the variations in loads depend on initial angle-of-attack, and its characteristic time-scale is a function of angle-of-attack. This angle-of-attack dependence is accounted for by considering the model parameters as function of angle-of-attack. Any constant value of the parameters can reproduce amplitude and frequency dependence. Therefore, we consider all the parameters to be functions of instantaneous angle-of-attack $\alpha$. Thus, the model for $C_d(t)$ becomes as in Eq.(\ref{eq:UAM}).
+
+\begin{eqnarray}
+\label{eq:UAM}
+Cz(\alpha,t) &=& Cz_{st}(\alpha) + C_d(t) \nonumber\\
+C_d(t)&=& x_1(t) + x_2(t) +x_3(t) \nonumber \\
+\dot{x}_1(t)&=&a(\alpha)x_1(t)+ K_1(\alpha)\dot{\alpha}(t), \, \, x_1(0)=0 \nonumber \\
+\dot{x}_2(t)&=&a(\alpha)x_2(t)+ K_{2}(\alpha)x_1^{2}(t) + K_{3}(\alpha)x_1(t)\dot{\alpha}(t), \, \, x_2(0)=0 \nonumber \\
+\dot{x}_3(t)&=&a(\alpha)x_3(t)+ K_{2}(\alpha)x_1^{3}+ K_{31}(\alpha)x_1(t)x_2(t)  + \nonumber \\
+&& K_{32}(\alpha)x_2(t)\dot{\alpha}(t) + K_{3}(\alpha)x_1^{2}(t)\dot{\alpha}(t) , \, \, x_3(0)=0
+\end{eqnarray}
+
+The VVM gives differential equations for second and third kernels containing nonlinear terms in $x_1, x_2, x_3$. The parameter values in these equations give a certain definite kernel shape, and this has been obtained computationally in \cite{OmranACC}. Further, an interpretation of each of these terms as the effect on time-constant of a step response is also provided.
+
+It is important to note that, in this formulation there is no assumption of the type of data implicitly or explicitly, as done in other model structures proposed in literature. Therefore, this model structure is generic and can be further extended to any application, and estimated from any data using an appropriate approach. The parameter functions are estimated from small and large amplitude forced oscillation wind tunnel test data, as presented in the next section.
+
+
+\subsection{Parameter Estimation Approach}
+
+In a small amplitude forced oscillation test, the wind tunnel model is oscillated in pitch in a sinusoidal motion given by, $\alpha(t)= \alpha_0 + \Delta \alpha sin(\omega_0 t)$. The measured normal force coefficient $C_Z(t)$ is converted to in-phase derivative $C_{Z_{\alpha,\omega_0}}(\alpha_0)$ and out-of-phase derivative $C_{Z_{\dot{\alpha},\omega_0}}(\alpha_0)$ by harmonic analysis of the time-series data. Therefore, the steady-state response of the normal force coefficient is given by,
+\begin{eqnarray}
+\label{Cztsmall}
+Cz(t) = Cz_0(\alpha_0) + Cz_{\alpha,\omega_0}(\alpha_0) \Delta \alpha sin(\omega t) + Cz_{\dot{\alpha},\omega_0}(\alpha_0) \frac{\omega  \bar{c}}{2 V} \Delta \alpha \cos(\omega t)
+\end{eqnarray}
+where, $\bar{c}$ is mean aerodynamic chord and $V$ is the air speed.
+
+Now consider the response of VVM given by Eq.(\ref{eq:UAM}). For small amplitude input, only first kernel state is significant and the model response is linear. So for small amplitude pitching motion $C_d(t)=x_1(t)$. Therefore, the output $C_d(t)$ to the input $\dot{\alpha}= \Delta\alpha \omega \cos(\omega t)$ is given by,
+\begin{eqnarray}
+\dot{C}_d(t) &=& \dot{x}_1(t) \nonumber \\
+&=& a(\alpha_0)x_1 + K_1(\alpha_0) \dot{\alpha}(t) \nonumber \\
+&=& a(\alpha_0)x_1 + K_1(\alpha_0) \frac{\omega \bar{c}}{2 V} \Delta\alpha \cos(\omega t)
+\end{eqnarray}
+Solving this differential equation, the steady-state solution is obtained as,
+\begin{eqnarray}
+C_d(t)_{ss} &=& \frac{K_1 \Delta \alpha \omega^2 }{a^2 + \omega^2} sin(\omega t)  -  \frac{K_1 \Delta \alpha \omega a }{a^2 + \omega^2} \cos(\omega t)
+\end{eqnarray}
+ Then the Eq.(\ref{eq:Czt}) is linearized at $\alpha_0$ and the above equation is substituted in it to get the total normal force coefficient as,
+\begin{eqnarray}
+\label{eq:modelresp}
+Cz(t)_{ss} &=& Cz_0(\alpha_0) + Cz_{\alpha,st}(\alpha_0) \Delta \alpha sin(\omega t) +  Cz_{q}(\alpha_0) \frac{\omega \bar{c}}{2 V} \Delta\alpha \cos(\omega t) \nonumber \\
+&+& \frac{K_1 \omega^2 }{a^2 + \omega^2} \Delta \alpha sin(\omega t)  -  \frac{K_1 a }{a^2 + \omega^2} \frac{\bar{c
+ }\omega }{2V} \Delta \alpha  \cos(\omega t)
+\end{eqnarray}
+
+Equations (\ref{Cztsmall}) and (\ref{eq:modelresp}) represent the steady state variation of aerodynamic coefficient from the wind tunnel and VVM respectively. Hence, comparing them gives the relation between model parameters and experimental derivatives as,
+\begin{eqnarray}
+\label{eq:2step}
+Cz_{\alpha,\omega_0}(\alpha_0) &=&  Cz_{\alpha,st}(\alpha_0) +  \frac{K_1 \omega^2 }{a^2 + \omega^2}  \nonumber \\
+Cz_{\dot{\alpha},\omega_0}(\alpha_0) &=&  Cz_{q}(\alpha_0)  -  \frac{K_1 a }{a^2 + \omega^2}
+\end{eqnarray}
+Rearranging the terms in Eq.(\ref{eq:2step}), a linear relation between $Cz_{\alpha,\omega_0}(\alpha_0)$ and $Cz_{q,\omega_0}(\alpha_0)$ is evident as given in Eq.(\ref{eq:linregress}). $Cz_{\alpha,\omega_0}(\alpha_0)$ and $Cz_{q,\omega_0}(\alpha_0)$ are known from SAFO test data.
+\begin{eqnarray}
+\label{eq:linregress}
+Cz_{\alpha,\omega_0}(\alpha_0) &=& a Cz_{\dot{\alpha},\omega_0}(\alpha_0) + [ Cz_{\alpha,st}(\alpha_0) + K_1 - Cz_{\dot{\alpha}}(\alpha_0) ]
+\end{eqnarray}
+
+The linear relation between in-phase versus out-of-phase derivative must be validated before estimation of the first kernel state parameters using SAFO data. In the parameter estimation process, in-phase and out-of-phase derivatives are estimated from the SAFO data. The effects of measurement noise and mild nonlinearities are removed. However, it is important to check the harmonics in small amplitude response  and nonlinearity in static variation on the range of angle-of-attack corresponding to the amplitude used in the test.
+
+Then, $a(\alpha_0),K1(\alpha_0)$ at each $\alpha_0$ in the stall region can be estimated by the two-step regression method presented in \cite{Abramov2}. This method is given in APPENDIX $1$ and the estimation procedure is illustrated in the the next chapter.
+
+
+\section{Identification Case Studies}
+
+\subsection{Cz of F16XL}
+\subsection{Cm of GTA}
+\subsection{Cl, Cn of Delta-$65^o$ Wing}
+\subsection{Comparative analysis of VVM and PoDE}
+
+\section{Influence on Flight Dynamics}
+
+The VVM can be easily integrated with the available aero-database of that aircraft, because it is formulated as an incremental contribution of unsteady aerodynamic loads, as presented in Chapter $3$. This functional model of the incremental effect represented by $C_{Z_d}$ and $C_{m_d}$ is as given in Eq.(\ref{eq:VVMfun1}). Note that this feature is important in industrial-grade applications where the aero-databases have vary large number of tables.
+
+For the purpose of simulation, these differential equations are augmented to the 6DOF rigid-body equations of motion of the aircraft, and the parameter functions are included as tables in the aero-database. Therefore, the aircraft flight dynamics has two additional states. Note that, we need not make any changes to the original aero-database in the aircraft's available simulation setup. Thus, VVM can be seamlessly and simply used in 6DOF simulation studies.
+
+The fast flight dynamic modes are of primary interest in this analysis. This is because the dynamics of slower modes is effected by unsteady aerodynamics to a much lesser extent and it can be corrected by the pilot or the autopilot control laws. For the purpose of flight dynamic analysis, using a $5^{th}$ order set of equations of motions is sufficient as presented in details in \cite{GomanAES1,GomanAES2}. The states included in this set are $(\alpha, \beta, p, q, r)$. The linearization of this set of equations results in the flight dynamic modes of Short-period, Roll-subsidence and Dutch-roll. It is known that the time-scales of these modes are one order of magnitude smaller than the slower modes like Phugoid and Spiral. Hence, the results from this reduced set of equations of motion are not effected significantly by the slower modes.
+
+The $5^{th}$-order setup is subject to trim, linearization and stability analysis. An altitude of $H=6000 m$ and Mach number $M=0.4$ are used in this analysis. At trim points, $\dot{\alpha}=0$, and hence the steady-state solutions of Eq.(\ref{eq:VVMfun1}) are $[C_{Z_d},C_{m_d}]=[0,0]$. So, the trim solutions are obtained at the same aircraft kinematic states $(\alpha, \beta, p, q, r)$ as that from an aero-database without unsteady model. Therefore, the unsteady model does not effect the trim solutions directly, but causes difference in the transient dynamics between two steady states. The longitudinal trim solutions were investigated in the range $\alpha \in [28^o \, 40^o]$, and there were no trim solutions beyond this angle-of-attack.
+
+%\begin{figure}
+% \begin{subfigmatrix}{1}% number of columns
+%  \subfigure[Real-part of the eigenvalues of unsteady components of $C_Z$ and $C_m$]{\includegraphics[scale=0.9]{Rlocus_alpha}}
+%  \subfigure[Root-locus of positive eigenvalue of Short-Period mode]{\includegraphics[scale=0.9]{Rlocus_SP}}
+% \end{subfigmatrix}
+% \caption{Eigenvalue analysis to characterize the effect of longitudinal unsteady aerodynamics on longitudinal modes, at altitude $6000 m$ and Mach $0.4$}
+% \label{fig:FMUnst}
+%\end{figure}
+
+
+\begin{figure}[tb]
+\begin{center}
+\includegraphics[scale=0.9]{Rlocus_alpha}
+\caption{Real-part of the eigenvalues of unsteady components of $C_Z$ and $C_m$}
+\label{fig:Rlocus_alpha}
+\end{center}
+\end{figure}
+
+\begin{figure}[tb]
+\begin{center}
+\includegraphics[scale=0.9]{Rlocus_SP}
+\caption{Root-locus of positive eigenvalue of Short-Period mode}
+\label{fig:Rlocus_SP}
+\end{center}
+\end{figure}
+
+The unsteady model is found to effect the stability properties of the trim solutions. The aircraft dynamics equations are linearized at trim points, and their eigen-spectrum is analyzed to understand the stability characteristics. Since the linear stability analysis is valid for only small range of angle-of-attack around the trim-point, only the first kernel state of the estimated VVM is used in this analysis. Since the equations of motion consist of two additional states $C_{Z_d}(t),C_{m_d}(t)$, there are two additional poles (eigenvalues) corresponding to them.
+
+A locus of the two real eigenvalues produced by the unsteady model states for $\alpha \in [28^o \, 40^o]$ is presented in Fig.(\ref{fig:Rlocus_alpha}). The real-part of the poles are found to approach zero with increasing angle-of-attack. This shows that the time-scales of the unsteady modes decrease as the aircraft enters stall angle-of-attack region; and their effect on flight dynamics becomes more prominent. As these poles come close to imaginary axis, they repel the eigenvalues of other modes away from them. Thus, the unsteady modes effect other flight modes significantly.
+
+We have analyzed here only the effects on short-period mode as only longitudinal unsteady aerodynamic effects are included in the aerodynamic model. We consider the root-locus of the positive frequency of the short-period complex conjugate pair of eigenvalues. The first root-locus is obtained using the aero-database with the values of aero-derivative for frequency $f= 1 Hz$ from SAFO data. The second root-locus is for VVM, which accommodates the frequency dependence of damping derivatives in the form of unsteady model poles. A comparison of these two root-locii is presented in Fig.(\ref{fig:Rlocus_SP}). While the first root-locus shows that the Short-period pole crosses imaginary axis and becomes unstable at $\alpha > 36^o$; the second root-locus shows that this happens at $\alpha > 32^o$. There is also significant difference in the Short-period mode frequency for the entire angle-of-attack range. These two results show that there can be a significant error in control-law design if the unsteady aerodynamic effects are not properly included in the model.
+
+In the control-law design, the effect of unmodeled dynamics is expected to be accommodated by the robustness of estimated feedback control loop-gains. However, even in this case the handling qualities of the closed-loop aircraft dynamics are likely to be severely effected as shown in \cite{Abramov2}.
+
+The role of nonlinearity in unsteady variation of aerodynamic loads is not evident from linear stability analysis. The nonlinear stability of the trim points in the stall angle-of-attack regimes is characterized by the Region-of-attraction of a trim solution. It is usually bounded and defines the level of critical disturbances. GTA was found to have unstable equilibrium states for lateral-directional modes in the stall angle-of-attack regimes. Close to the boundary of this unstable region, the stable equilibriums have limited stability region. An accurate model of nonlinear unsteady aerodynamics is important for correct prediction of critical external disturbances for stability of a flight mode.
+
+\section{Conclusions}
+
+
+
+%\section{Conclusion}
+%Although a conclusion may review the main points of the paper, it must not replicate the abstract. A conclusion might elaborate on the importance of the work or suggest applications and extensions. Do not cite references in the conclusion. Note that the conclusion section is the last section of the paper to be numbered. The appendix (if present), acknowledgment, and references are listed without numbers.
+%
+%\section*{Appendix}
+%
+%An Appendix, if needed, appears before the acknowledgments.
+
+\section*{Acknowledgments}
+Authors acknowledge the partial financial support from ADA,Bangalore for doing this work.
+
+\section*{References}
+
+\bibliographystyle{aiaa}
+\bibliography{ThesisRef}
+
+\end{document}

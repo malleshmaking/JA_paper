@@ -1,0 +1,249 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{AGARDAR305}
+Tristrant, D., \enquote{Analysis of Nonlinear and Unsteady Data for
+  Mathematical Modeling,} {\em Cooperative Program on Dynamic Wind Tunnel
+  Experiments of Manoeuvring Aircraft\/}, AGARD AR-305, France, 1996, pp. 1--6.
+
+\bibitem{Goman94}
+Goman, M.~G. and Khrabrov, A.~N., \enquote{State-space representation of
+  Aerodynamic Characteristics of an Aircraft at High-angle-of-attack,} {\em
+  AIAA Journal of Aircraft\/}, Vol.~31, No.~5, 1994, pp.~1109--1115.
+
+\bibitem{Tobak1}
+Tobak, M. and Schiff, L., \enquote{On The Formulation of The Aerodynamic
+  Characteristics in Aircraft Dynamics,} NASA-TM 1976-208969, NASA Ames
+  Research Centre, Mofett Feild, California, January 1976.
+
+\bibitem{GreReview}
+Greenwell, D., \enquote{A Review of Flight Dynamic Modeling for Flight Dynamics
+  of Manoeuvrable Aircraft,} {\em AIAA Atmosperic Flight Mechanics Conference
+  and Exhibit\/}, AIAA 2004-5276, Providence, Rhode Island, 2004.
+
+\bibitem{upset}
+Foster, J., Cunningham, K., Fremaux, C., Shah, G., Stewart, E., and et. al.,
+  R.~R., \enquote{Dynamics Modeling and Simulation of Large Transport Airplanes
+  in Upset Conditions,} {\em AIAA Guidance, Navigation, and Control Conference
+  and Exhibit\/}, AIAA 2005-5933, San Francisco, California, 2005.
+
+\bibitem{SUPRAGoman}
+Groen, E. e.~a., \enquote{SUPRA - Enhanced Upset Recovery Simulation,} {\em
+  AIAA Modeling and Simulation Technologies Conference\/}, AIAA 2012-4630,
+  Minnesota, Minneapolis, USA, August 2012.
+
+\bibitem{SUPRAICAS}
+Fucke, L., Groen, E., Goman, M., Abramov, N., Wentink, M., Nooij, S., and
+  Zaichik, L., \enquote{Final results of the supra project: Improved Simulation
+  of Upset Recovery.} {\em 28th Congress of the International Council of the
+  Aeronautical Sciences\/}, ICAS, Brisbane, Australia, September 2012, pp.
+  4607--4616.
+
+\bibitem{F18derivatives}
+Iliff, K. and Wang, K. S.~C., \enquote{Extraction of Lateral-Directional
+  Control and Stability Derivatives for the Basic F18 Aircraft at
+  High-Angles-of-Attack,} NASA-TM 4786, NASA Dryden Flight Research Centre,
+  Edwards, California, February 1997.
+
+\bibitem{Turbine1}
+Leishman, J.~G., \enquote{Challenges in Modeling the unsteady Aerodynamic of
+  Wind Turbines,} {\em Wind Energy\/}, Vol.~5, 2002, pp.~85--132.
+
+\bibitem{Helicopter1}
+Majhi, J.~R. and Ganguli, R., \enquote{Helicopter Blade Flapping with and
+  without Small Angle Assumption in Presence of Dynamic Stall,} {\em Applied
+  Mathematical Modeling\/}, Vol.~34, 2010, pp.~3726--3740.
+
+\bibitem{FlapWing}
+Ho, S., Nassef, H., Ponsinssirirak, N., Tai, Y.-C., and Ho, C.-M.,
+  \enquote{Unsteady Aerodynamics and Flow Control of Flapping Wing Flyers,}
+  {\em Progress in Aerospace Sciences, Elsevier\/}, Vol.~39, 2003,
+  pp.~635--681.
+
+\bibitem{Abramov99}
+Abramov, N.~B., Goman, M.~G., Khrabrov, A.~N., and Kolinko, K.~A.,
+  \enquote{Simple Wings Unsteady Aerodynamics at High Angle of Attack :
+  Experimental and Modeling Results,} {\em AIAA Atmosperic Flight Mechanics
+  Conference and Exhibit\/}, AIAA 1999-4013, Chicago, Illinois, 1999.
+
+\bibitem{Abramov2}
+Abramov, N., Goman, M., Greenwell, D., and Khrabrov, A., \enquote{Two Step
+  Regression Method for Identification of High-Incidence Unsteady Aerodynamic
+  Model,} {\em AIAA Atmosperic Flight Mechanics Conference and Exhibit\/}, AIAA
+  2001-4080, Providence, Rhode Island, 2001.
+
+\bibitem{Lutze1}
+de. Oliveira~Neto, P. and Lutze, F., \enquote{First order Unsteady Aerodynamic
+  Model that Includes Static Hysteresis Phenomena,} {\em AIAA Atmosperic Flight
+  Mechanics Conference and Exhibit\/}, AIAA 2002-4803, Monterey, California,
+  2002.
+
+\bibitem{Klein}
+Klein, V. and Murphy, P.~C., \enquote{Estimation of Aircraft Nonlinear Unsteady
+  Parameters From Wind Tunnel Data,} NASA-TM 1998-208969, NASA Langley Research
+  Centre, Hampton, VA, December 1998.
+
+\bibitem{Tobak3}
+Tobak, M., Chapman, G., and Schiff, L., \enquote{Mathematical Modeling of the
+  Aerodynamic Characteristics in Flight Dynamics,} NASA-TM 85880, NASA Ames
+  Research Centre, Mofett Feild, California, January 1984.
+
+\bibitem{MurphyMethods}
+Murphy, P.~C. and Klein, V., \enquote{Validation of Methodology for Estimating
+  Aircraft Unsteady Aerodynamic Parameters from Dynamic Wind Tunnel Tests,}
+  {\em AIAA Atmosperic Flight Mechanics Conference and Exhibit\/}, AIAA
+  2003-5397, Austin, Texas, 2003.
+
+\bibitem{MurphyGTM}
+Murphy, P.~C., Klein, V., and Frink, N., \enquote{Unsteady Aerodynamic Modeling
+  in Roll for the NASA Generic Transport Model,} {\em AIAA Atmosperic Flight
+  Mechanics Conference and Exhibit\/}, AIAA 2012-4652, Minneapolis, Minnesota,
+  2012.
+
+\bibitem{F16XLLong}
+Klein, V., Murphy, P.~C., Curry, T.~M., and Brandon, J., \enquote{Analysis of
+  Longitudinal Static and Oscillatory Data of the F16-XL Aircraft,} NASA-TM
+  1997-206276, NASA Langley Research Centre, Hampton, VA, December 1997.
+
+\bibitem{Singh1}
+Singh, J. and Jategaonkar, R.~V., \enquote{Identification of
+  Lateral-Directional Behaviour in Stall from Flight Data,} {\em AIAA Journal
+  of Aircraft\/}, Vol.~33, No.~3, 1995, pp.~627--630.
+
+\bibitem{Singh2}
+Singh, J. and Jategaonkar, R.~V., \enquote{Flight Determination of
+  Configruational Effects on Aircraft Stall Behaviour,} {\em AIAA Atmosperic
+  Flight Mechanics Conference and Exhibit\/}, AIAA 1996-3441, San Diego, CA,
+  1996.
+
+\bibitem{GreComp}
+Kyle, H., Lowenberg, M., and Greenwell, D., \enquote{Comparative Evaluation of
+  Unsteady Aeordynamic Modeling Approaches,} {\em AIAA Atmosperic Flight
+  Mechanics Conference and Exhibit\/}, AIAA 2004-5272, Providence, Rhode
+  Island, 2004.
+
+\bibitem{NeuralNet}
+Faller, W.~E. and Schreck, S.~J., \enquote{Unsteady Fluid Mechanics
+  Applications of Neural Networks,} {\em Journal of Aircraft\/}, Vol.~34,
+  No.~1, January 1997, pp.~48--55.
+
+\bibitem{ReiKernel}
+Resisenthel, P.~H., \enquote{Prediction of Unsteady Aerodynamic Forces via
+  Nonlinear Kernel Idnetification,} {\em AIAA/NASA Langley International Forum
+  on Aeroelasticity and Structural Dynamics\/}, AIAA, Williamsburg, VA, 1999.
+
+\bibitem{Gursul}
+Gursul, I., \enquote{Review of Unsteady Vortex Flows over Slender Delta Wing,}
+  {\em Journal of Aircraft\/}, Vol.~42, No.~2, 2005, pp.~299--319.
+
+\bibitem{Nelson}
+Pelletier, A. and Nelson, R., \enquote{The Unsteady Aerodynamics of Slender
+  Wings and Aircrafts undergoing Large Amplitude Manuevers,} {\em Progress in
+  Aerospace Sciences\/}, Vol.~39, 2003, pp.~189--248.
+
+\bibitem{Boer1}
+Cunnigham, A.~M. and den Boer, R.~G., \enquote{Low-speed Unsteady Aerodynamics
+  of Pitching Straked Wing at High Incidence-PartI:Test Program,} {\em Journal
+  of Aircraft\/}, Vol.~27, No.~1, 1990, pp.~23--30.
+
+\bibitem{Boer2}
+Cunnigham, A.~M. and den Boer, R.~G., \enquote{Low-speed Unsteady Aerodynamics
+  of Pitching Straked Wing at High Incidence-PartII:Harmonic Analsysis,} {\em
+  Journal of Aircraft\/}, Vol.~27, No.~1, 1990, pp.~31--41.
+
+\bibitem{X31}
+Smith, M.~S., \enquote{Analysis of Wind Tunnel Oscillatory data of the X31,}
+  NASA-CR 208725, NASA Langley Research Centre, Hampton, VA, February 1999.
+
+\bibitem{Abramov1}
+Abramov, N., Goman, M., and Khrabrov, A., \enquote{Aircraft Dynamics at High
+  Incidence Flight with Account of Unsteady Aerodynamic Effects,} {\em AIAA
+  Atmosperic Flight Mechanics Conference and Exhibit\/}, AIAA 2004-5274,
+  Providence, Rhode Island, 2004.
+
+\bibitem{Volterra}
+Volterra, V., {\em Theory of Functionals and of Integral and
+  Integro-differential Equations\/}, Dover Publications Inc., New York, 1930,
+  2005.
+
+\bibitem{Marmerelis}
+Marmerelis, V.~Z., {\em Nonlinear Dynamic Modeling of Physiological Systems\/},
+  Wilay-IEEE, 2004.
+
+\bibitem{SilvaUnst}
+Silve, W.~A., Piatak, D.~J., and Scott, R.~C., \enquote{Identification of
+  Experimental Unsteady Aerodynamic Impulse Responses,} {\em Journal of
+  Aircraft\/}, Vol.~42, No.~6, 2005, pp.~1548--1552.
+
+\bibitem{BoydChua}
+Boyd, S. and Chua, L.~., \enquote{Fading Memory and the Problem of
+  Approximating Nonlinear Operators with Volterra Series,} {\em IEEE
+  Transactions On Circuits and System\/}, , No.~11, 1985, pp.~1150--1161.
+
+\bibitem{Rugh}
+Rugh, W.~J., {\em Nonlinear System Theory: The Volterra/Weiner Approach\/}, The
+  John Hopkins University Press, 1981.
+
+\bibitem{OmranACC}
+Omran, A. and Neuman, B., \enquote{Nonlinear Cause.Effect Analysis for a Second
+  Order System using Volterra Kernels,} {\em American Control Conference\/},
+  AACC, Baltimore, MD, USA, 2010, pp. 2706--2711.
+
+\bibitem{Morelli}
+Klein, V. and Morelli, E.~A., {\em Aircraft System Identification: Theory and
+  Practice\/}, American Institute of Aeronautics and Astronautics, 2006.
+
+\bibitem{ReiFin}
+Reisenthel, P., Xie, W., and Gurusul, I., \enquote{An analysis of Fin Motion
+  Induced Vortex Breakdown,} {\em 37th AIAA Aerospace Sciences Meeting and
+  Exhbit\/}, No. 99-0316, AIAA, Reno, NV, 1999.
+
+\bibitem{PIImanual1}
+Goman, M., Khramtsovsky, A., Usoletsev, S., Vinogodrov, Y., and Tyrtyshnikov,
+  S., {\em PII Scientific Package: the Textbook\/}, Central Aerohydrodynamic
+  Institute TsAGI, Moscow, Russia, 1st ed., November 1993.
+
+\bibitem{PIImanual2}
+Usoletsev, S. and Khramtsovsky, A., {\em Package for Interactive Identification
+  user guide\/}, Central Aerohydrodynamic Institute TsAGI, Russia, 2nd ed.,
+  November 2002.
+
+\bibitem{GomanICAS94}
+Goman, M., Khrabrov, A., and Usoltsev, S., \enquote{Identification of Unsteady
+  Aerodynamic Model of a Delta-wing at High Angels of Attack,} {\em 10th IFAC
+  Symposium on System Identification\/}, SYSID94, 1994.
+
+\bibitem{GomanICAS97}
+Goman, M., Khrabrov, A., and Usoltsev, S., \enquote{Unsteady Aerodynamic Model
+  for Large Amplitude Maneuvers and its Parameter Estimation,} {\em 11th IFAC
+  Symposium on System Identification\/}, SYSID97, 1997.
+
+\bibitem{AbramovThesis}
+Abramov, N., {\em Modelling of Unsteady Aerodynamic Characteristics for
+  Aircraft Dynamics Applications at High Angles of Attack\/}, Phd thesis, De
+  Montfort University, June 2005.
+
+\bibitem{Exp8Airfoil1}
+McCroskey, W.~J., McAlister, K.~W., Carr, L.~W., and Pucci, S.~L., \enquote{An
+  Experimental Study of Dynamic Stall on Advanced Airfoils, Volume 1. Summary
+  of Experiments,} NASA-TM 84245, NASA Ames Research Centre, Mofett Feild,
+  California, July 1982.
+
+\bibitem{Bedrosian}
+Bedrosian, E. and Rice, S.~O., \enquote{Output Properties of Volterra Systems
+  (Dynamic Systems with Memory) Driven by Harmonic and Gaussian Inputs,} {\em
+  Proceedings of IEEE\/}, Vol.~59, No.~12, 1971, pp.~1688--1707.
+
+\bibitem{GomanAES1}
+Goman, M.~G., Khramtsovsky, A.~V., and Kolesnikov, E.~N., \enquote{Evaluation
+  of Aircraft Performance and Maneuvearbility by Computation of Attainable
+  Equilibrium Sets,} {\em AIAA Journal of Guidance Control and Dynamics\/},
+  Vol.~31, No.~2, 2008, pp.~329--339.
+
+\bibitem{GomanAES2}
+Abramov, N.~B., Goman, M., Kolesnikov, E., and Sidoryuk, M.,
+  \enquote{Investigation of Attainable Equilibrium Sets for Evaluation of
+  Flight Control Laws,} {\em 48th AIAA Aerospace sciences Meeting and
+  Exhibit\/}, AIAA, Orlando-Florida, 2010, pp. 1--12.
+
+\end{thebibliography}

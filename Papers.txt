@@ -1,0 +1,30 @@
+COnference papers for the AIAA AFMC 2015
+-------------------------------------------------
+1) Modeling of AWS using BMAA
+	- Write paper draft based on Thesis Chapter
+	- Examples of the effect of all the parameters on the shape of AWS
+
+2) Modeling a Helicopter airfoil unsteady aerodynamics loads using VVM
+	- Khrabrov-Greenwell model of pitch-rate unsteady derivative
+	- Second order VVM model for wide range of pitch-rates
+
+3) A criteria for flight in given envelope using Incidence-rate, maneuvering-boundaries
+estimated using AES methodology.
+
+
+Journal Papers
+--------------
+1) JA-Article :
+   Nonlinear Unsteady Aerodynamic modelling for Flight dynamics at Stall
+
+
+2) JA-Engineering Note : 
+   Modeling AWS using BMAA (4page only)
+
+   
+3) Elsevier- Applied Mathematical Modeling : 
+   A comparative analysis of VVM and PoDE for system identification
+   of nonlinear systems with memory
+
+4) Elsevier- Applied Mathematical Modeling : 
+   Modeling a Helicopter airfoil unsteady aerodynamic loads using VVM

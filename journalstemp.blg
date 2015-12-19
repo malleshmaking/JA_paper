@@ -1,0 +1,67 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: journalstemp.aux
+The style file: aiaa.bst
+Database file #1: journalstempNotes.bib
+Database file #2: ThesisRef.bib
+Warning--string name "cas32" is undefined
+--line 11 of file ThesisRef.bib
+Warning--empty pages in GreReview
+Warning--empty pages in upset
+Warning--empty pages in SUPRAGoman
+Warning--empty pages in Abramov99
+Warning--empty pages in Abramov2
+Warning--empty pages in Lutze1
+Warning--empty pages in MurphyMethods
+Warning--empty pages in MurphyGTM
+Warning--empty pages in Singh2
+Warning--empty pages in GreComp
+Warning--empty pages in ReiKernel
+Warning--empty pages in Abramov1
+Warning--there's a number but no volume in BoydChua
+Warning--there's a number but no series in ReiFin
+Warning--empty pages in ReiFin
+Warning--empty pages in GomanICAS94
+Warning--empty pages in GomanICAS97
+You've used 47 entries,
+            2292 wiz_defined-function locations,
+            898 strings with 12816 characters,
+and the built_in function-call counts, 10107 in all, are:
+= -- 690
+> -- 437
+< -- 25
++ -- 164
+- -- 117
+* -- 1017
+:= -- 1436
+add.period$ -- 87
+call.type$ -- 47
+change.case$ -- 5
+chr.to.int$ -- 9
+cite$ -- 64
+duplicate$ -- 551
+empty$ -- 1191
+format.name$ -- 117
+if$ -- 2284
+int.to.chr$ -- 0
+int.to.str$ -- 47
+missing$ -- 41
+newline$ -- 145
+num.names$ -- 47
+pop$ -- 188
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 170
+stack$ -- 0
+substring$ -- 448
+swap$ -- 184
+text.length$ -- 22
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 17
+while$ -- 71
+width$ -- 49
+write$ -- 436
+(There were 18 warnings)
